@@ -80,6 +80,28 @@
         <a href="https://wa.me/5511994051299?text=Ol%C3%A1%21%20Quero%20o%20Sprint%20de%20Receita%2048h.%20Pode%20me%20enviar%20os%20detalhes%20do%20Diagn%C3%B3stico%20%2B%20Plano%207%20Dias%20%2B%2010%20Roteiros%20por%20R%24%20600%3F" target="_blank" rel="noopener noreferrer" class="btn-cta">Quero o Sprint de Receita</a>
       </div>
     </section>
+
+    <section class="section download" id="download-pdf">
+      <div class="container">
+        <h2>Baixe o Protocolo</h2>
+        <p class="offer-sub">Preencha o formulário para baixar o PDF <strong>THE AI MINDSET PROTOCOL</strong>.</p>
+
+        <form id="pdf-download-form" class="download-form">
+          <div class="form-grid">
+            <label>
+              Nome
+              <input type="text" name="nome" placeholder="Seu nome" required />
+            </label>
+            <label>
+              WhatsApp ou E-mail
+              <input type="text" name="contato" placeholder="(11) 99999-9999 ou seu@email.com" required />
+            </label>
+          </div>
+          <button type="submit" class="btn-cta">Baixar PDF agora</button>
+          <p id="download-status" class="download-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -87,5 +109,27 @@
       <p>Elevateza - São Paulo, 2026</p>
     </div>
   </footer>
+
+  <script>
+    const form = document.getElementById('pdf-download-form');
+    const statusText = document.getElementById('download-status');
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const nome = form.elements.nome.value.trim();
+      const contato = form.elements.contato.value.trim();
+      if (!nome || !contato) return;
+
+      statusText.textContent = `Perfeito, ${nome}. Seu download vai iniciar...`;
+
+      const link = document.createElement('a');
+      link.href = 'assets/THE_AI_MINDSET_PROTOCOL.pdf';
+      link.download = 'THE_AI_MINDSET_PROTOCOL.pdf';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  </script>
 </body>
 </html>
